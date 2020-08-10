@@ -7,7 +7,7 @@ import 'app/modules/login/login_binding.dart';
 import 'app/routes/app_pages.dart';
 import 'app/theme/app_colors.dart';
 import 'app/theme/app_theme.dart';
-import 'app/widgets/custom_loading.dart';
+import 'app/widgets/custom_loading_widget.dart';
 
 void main() {
   runApp(GlobalLoaderOverlay(
