@@ -12,11 +12,11 @@ class CadastroController extends GetxController {
   final user = UserModel();
 
   onChangedEmail(value) => this.user.email = value;
-  
+
   onChangedSenha(value) => this.user.senha = value;
   onChangedNome(value) =>
       value != this.user.nome ? this.user.nome = value : null;
-  
+
   validateCpf(value) =>
       GetUtils.isCpf(value) == true ? null : 'Insira um CPF válido.';
   validateNome(value) => value.length < 3 ? 'Insira um nome válido.' : null;
@@ -37,19 +37,22 @@ class CadastroController extends GetxController {
   set status(value) => this._status.value = value;
 
   cadastrar() async {
-    this.status = true;
-    final FirebaseUser user =
-        (await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: this.user.email,
-      password: this.user.senha,
-    ))
-            .user;
-    if (user != null) {
-      var token = user.getIdToken().toString();
-      await saveUserInfo(token);
-      this.status = false;
-    } else
-      this.message = 'Erro ao realizar cadastro';
+    try {
+      final FirebaseUser user =
+          (await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: this.user.email,
+        password: this.user.senha,
+      ))
+              .user;
+      if (user != null) {
+        var token = user.getIdToken().toString();
+        await saveUserInfo(token);
+        this.status = true;
+      } else
+        this.message = 'Email já está cadastrado';
+    } catch (e) {
+      this.message = 'Email já está cadastrado';
+    }
   }
 
   saveUserInfo(token) async {

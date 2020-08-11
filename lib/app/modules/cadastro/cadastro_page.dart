@@ -79,6 +79,7 @@ class CadastroPage extends GetView<CadastroController> {
                                     controller.onSavedSenha(value),
                                 type: TextInputType.text,
                               ),
+                              Obx(() => controller.message.length > 1 ? Text(controller.message, style: TextStyle(color: Colors.red),) : Container(),),
                               Padding(
                                 padding: const EdgeInsets.only(top: 24.0),
                                 child: CustomButtonWidget(
@@ -87,13 +88,13 @@ class CadastroPage extends GetView<CadastroController> {
                                     final FormState form = formKey.currentState;
                                     if (form.validate()) {
                                       form.save();
-                                      scaffoldKey.currentContext
+                                      Get.overlayContext
                                           .showLoaderOverlay();
                                       await controller.cadastrar();
-                                      scaffoldKey.currentContext
+                                      Get.overlayContext
                                           .hideLoaderOverlay();
-                                      Get.offAllNamed(Routes.HOME,
-                                          arguments: controller.user);
+                                      controller.status ? Get.offAllNamed(Routes.HOME,
+                                          arguments: controller.user) : null ;
                                     }
                                   },
                                 ),

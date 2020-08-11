@@ -58,5 +58,11 @@ class LoginController extends GetxController {
     });
   }
 
+  
+  final _status = false.obs;
+  get status => this._status.value;
+  set status(value) => this._status.value = value;
+  
+
   cadastro() => Get.toNamed(Routes.CADASTRO);
 }

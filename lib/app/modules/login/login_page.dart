@@ -89,6 +89,7 @@ class LoginPage extends GetView<LoginController> {
                 ],
               ),
             ),
+            Obx(() => controller.status ? Text('Verifique usuário e/ou senha', style: TextStyle(color: Colors.red),) : Container() ),
             Padding(
               padding: const EdgeInsets.only(top: 40.0),
               child: CustomButtonWidget(
@@ -103,6 +104,7 @@ class LoginPage extends GetView<LoginController> {
                       Get.offAllNamed(Routes.HOME, arguments: controller.user);
                       }else {
                       Get.overlayContext.hideLoaderOverlay();
+                      controller.status = true;
                       print('erro ao logar');
                       }
                     }
