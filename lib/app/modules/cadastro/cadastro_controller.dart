@@ -16,6 +16,7 @@ class CadastroController extends GetxController {
   onChangedSenha(value) => this.user.senha = value;
   onChangedNome(value) =>
       value != this.user.nome ? this.user.nome = value : null;
+  onChangeTelefone(value) => this.user.telefone = value ; 
 
   validateCpf(value) =>
       GetUtils.isCpf(value) == true ? null : 'Insira um CPF válido.';
@@ -23,10 +24,12 @@ class CadastroController extends GetxController {
   validateSenha(value) => value.length < 6 ? 'Insira uma senha válida.' : null;
   validateEmail(value) =>
       GetUtils.isEmail(value) ? null : 'Insira um email válido.';
+  validateTelefone(value) => value.length < 11 ? 'Insira um número de telefone válido' : null ; 
 
   onSavedEmail(value) => this.user.email = value;
   onSavedSenha(value) => this.user.senha = value;
   onSavedNome(value) => this.user.nome = value;
+  onSavedTelefone(value) => this.user.telefone = value;
 
   final _message = ''.obs;
   get message => this._message.value;
@@ -56,6 +59,7 @@ class CadastroController extends GetxController {
   }
 
   saveUserInfo(token) async {
+    this.user.pontos = 1500 ;
     await Firestore.instance
         .collection('users')
         .document(user.email)

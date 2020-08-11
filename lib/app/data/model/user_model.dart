@@ -5,8 +5,10 @@ class UserModel {
   String email;
   String senha;
   bool isAdmin;
+  String telefone;
+  int pontos ;
 
-  UserModel({ this.id, this.nome, this.email, this.senha, this.isAdmin });
+  UserModel({ this.telefone, this.id, this.nome, this.email, this.senha, this.isAdmin, this.pontos });
 
   UserModel.fromJson(Map<String, dynamic> json){
       this.id = json['id'];
@@ -14,6 +16,8 @@ class UserModel {
       this.email = json['email'];
       this.senha = json['senha'];
       this.isAdmin = json['isAdmin'];
+      this.telefone = json['telefone'];
+      this.pontos = json['pontos'];
   }
 
   Map<String, dynamic> toJson(){
@@ -23,6 +27,8 @@ class UserModel {
     data['email'] = this.email;
     data['senha'] = this.senha;
     data['isAdmin'] = this.isAdmin;
+    data['telefone'] = this.telefone;
+    data['pontos'] = this.pontos;
     return data;
   }
 }

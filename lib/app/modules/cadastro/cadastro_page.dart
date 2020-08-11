@@ -70,6 +70,7 @@ class CadastroPage extends GetView<CadastroController> {
                               ),
                               CustomTextFormField(
                                 text: 'Senha',
+                                obscure: true,
                                 max: 12,
                                 onChanged: (value) =>
                                     controller.onChangedSenha(value),
@@ -78,6 +79,17 @@ class CadastroPage extends GetView<CadastroController> {
                                 onSaved: (value) =>
                                     controller.onSavedSenha(value),
                                 type: TextInputType.text,
+                              ),
+                              CustomTextFormField(
+                                text: 'Telefone',
+                                max: 11,
+                                onChanged: (value) =>
+                                    controller.onChangeTelefone(value),
+                                validator: (value) =>
+                                    controller.validateTelefone(value),
+                                onSaved: (value) =>
+                                    controller.onSavedTelefone(value),
+                                type: TextInputType.number,
                               ),
                               Obx(() => controller.message.length > 1 ? Text(controller.message, style: TextStyle(color: Colors.red),) : Container(),),
                               Padding(
