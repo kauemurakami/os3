@@ -33,6 +33,7 @@ dependencies:
   flip_card: ^0.4.4
   loader_overlay: ^1.1.0+1
   flutter_spinkit: ^4.1.2+1
+  firebase_storage: ^3.1.6
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -58,6 +59,7 @@ flutter:
     - assets/images/gamers.png
     - assets/images/ninja.png
     - assets/images/logo.png
+    - assets/images/1.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

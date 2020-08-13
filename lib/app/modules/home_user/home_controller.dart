@@ -1,3 +1,5 @@
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 import 'package:os_tres/app/data/model/jogos_model.dart';
@@ -12,7 +14,18 @@ HomeController({@required this.repository}) : assert(repository != null);
   get user => this._user.value;
   set user(value) => this._user.value = value;
   
-  List<JogoModel> jogos = List<JogoModel>();
+  final _jogos = List<JogoModel>().obs;
+  get jogos => this._jogos.value;
+  set jogos(value) => this._jogos.value = value;
+
+  final _imagesJogos = List<String>().obs;
+  get imagesJogos => this._imagesJogos.value;
+  set imagesJogos(value) => this._imagesJogos.value = value;
+  
+  getImages() async {
+    //final ref = FirebaseStorage.instance.ref().child('images').child('1').getDownloadURL();
+    //return ref;
+  }
 
   @override
   void onInit() {

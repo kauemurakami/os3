@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:os_tres/app/theme/app_colors.dart';
 
 class CustomItemGrid extends Container {
+
+  final jogo;
+
+  CustomItemGrid({this.jogo});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
-      width: 100,
-      padding: EdgeInsets.all(8.0),
-      decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/cs-logo.png'))),
+      
+      color: secondColor,
+      child: Image.asset('assets/images/1.png'),
     );
   }
 }
