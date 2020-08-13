@@ -39,22 +39,21 @@ class LoginController extends GetxController {
                 email: this.user.email, password: this.user.senha))
         .user;
     if (user != null) {
-      await getInfo();
+      await getInfo(user.uid);
       return true;
     } else {
       return false;
     }
   }
 
-  getInfo() async {
+  getInfo(uid) async {
     print(this.user.email);
     await Firestore.instance
         .collection('users')
-        .document(this.user.email)
+        .document(uid)
         .get()
         .then((DocumentSnapshot ds) {
-          this.user = UserModel.fromJson(ds.data);
-      
+          this.user = UserModel.fromJson(ds.data); 
     });
   }
 

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:os_tres/app/data/model/user_model.dart';
 
 class MyFirebaseAuthProvider {
   cadastrar(us) async {
@@ -27,5 +28,14 @@ class MyFirebaseAuthProvider {
         .collection('users')
         .document(us.id)
         .setData(us.toJson());
+  }
+
+  login() async {
+
+  }
+
+  getInfo(user) async {
+    UserModel user;
+    await Firestore.instance.collection('users').document('$user.id').get().then((data) => user );
   }
 }
