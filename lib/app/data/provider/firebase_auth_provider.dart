@@ -11,8 +11,7 @@ class MyFirebaseAuthProvider {
       ))
               .user;
       if (user != null) {
-        var token = user.getIdToken().toString();
-        await saveUserInfo(token, us, user);
+        await saveUserInfo(us, user);
         return user;
       } else
         return null;
@@ -21,12 +20,12 @@ class MyFirebaseAuthProvider {
     }
   }
 
-  saveUserInfo(token, us, user) async {
+  saveUserInfo(us, user) async {
     us.pontos = 1500;
     us.id = user.uid;
     await Firestore.instance
         .collection('users')
-        .document(us.email)
+        .document(us.id)
         .setData(us.toJson());
   }
 }
