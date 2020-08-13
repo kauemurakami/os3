@@ -102,7 +102,7 @@ class CadastroPage extends GetView<CadastroController> {
                                       form.save();
                                       Get.overlayContext
                                           .showLoaderOverlay();
-                                      await controller.cadastrar();
+                                      await controller.cadastro();
                                       Get.overlayContext
                                           .hideLoaderOverlay();
                                       controller.status ? Get.offAllNamed(Routes.HOME,

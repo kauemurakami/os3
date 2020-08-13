@@ -39,30 +39,14 @@ class CadastroController extends GetxController {
   get status => this._status.value;
   set status(value) => this._status.value = value;
 
-  cadastrar() async {
-    try {
-      final FirebaseUser user =
-          (await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: this.user.email,
-        password: this.user.senha,
-      ))
-              .user;
-      if (user != null) {
-        var token = user.getIdToken().toString();
-        await saveUserInfo(token);
+  cadastro() async {
+    await repository.cadastrar(this.user).then((data){
+      if(data != null){
         this.status = true;
-      } else
-        this.message = 'Email já está cadastrado';
-    } catch (e) {
-      this.message = 'Email já está cadastrado';
-    }
+      }else{
+        this.message = 'Email já cadastrado';
+      }
+    });
   }
 
-  saveUserInfo(token) async {
-    this.user.pontos = 1500 ;
-    await Firestore.instance
-        .collection('users')
-        .document(user.email)
-        .setData(this.user.toJson());
-  }
 }
