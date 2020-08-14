@@ -38,7 +38,6 @@ class HomePage extends GetView<HomeController> {
               ),
             ),
           ),
-
           CustomButtonWidget(
             text: 'teste',
             callback: () => controller.getJogos(),
