@@ -20,6 +20,12 @@ class HomeController extends GetxController {
   get imagesJogos => this._imagesJogos.value;
   set imagesJogos(value) => this._imagesJogos.value = value;
 
+  
+  final _index = 0.obs;
+  get index => this._index.value;
+  set index(value) => this._index.value = value;
+  
+
   String imageUrl;
 
 /*

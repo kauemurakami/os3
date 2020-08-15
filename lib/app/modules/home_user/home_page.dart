@@ -1,53 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:os_tres/app/modules/home_user/widgets/item_grid_widget.dart';
-
+import 'package:os_tres/app/modules/buscar_jogo/buscar_jogo_page.dart';
+import 'package:os_tres/app/modules/criar_sala/criar_sala_page.dart';
+import 'package:os_tres/app/modules/home_user/home_screen.dart';
+import 'package:os_tres/app/modules/home_user/widgets/custom_bottom_navigation.dart';
+import 'package:os_tres/app/modules/minha_sala/minha_sala_page.dart';
 import 'home_controller.dart';
 
 class HomePage extends GetView<HomeController> {
+
+  final List<Widget> telas = [
+    HomeScreen(),
+    MinhaSalaPage(),
+    CriarSalaPage(),
+    BuscarJogoPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.all(24.0),
-            child: Image.asset(
-              'assets/images/logo.png',
-              height: 100.0,
-              width: 250.0,
-            ),
-          ),
-          //Text(controller.jogos[0].nomeJogo),
-          Obx(
-            controller.jogos.length == null ?
-            Center(child: CircularProgressIndicator(),) :
-            () =>Expanded(
-              child: GridView.count(padding: EdgeInsets.all(16.0),
-                childAspectRatio: 3 / 3,
-                crossAxisCount: 3,
-                mainAxisSpacing: 16.0,
-                crossAxisSpacing: 16.0,
-                children: List.generate(
-                    controller.jogos.length,
-                    (index) => 
-                      CustomItemGrid(jogo:controller.jogos[index])
-                    ),
-              ),
-            ),
-          ),
-         
-        ],
-      )),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: [
-        BottomNavigationBarItem(title : Text('Jogos'), icon: Icon(Icons.play_arrow, )),
-        BottomNavigationBarItem(title : Text('Minha Sala'), icon: Icon(Icons.home)),
-        BottomNavigationBarItem(title : Text('Buscar'), icon: Icon(Icons.search)),
-        BottomNavigationBarItem(title : Text('Criar Sala'), icon: Icon(Icons.add_to_queue)),
-      ]),
+      body: Obx(() => telas[controller.index]),
+
+      bottomNavigationBar: CustomBottomNavigation()
     );
   }
 }
