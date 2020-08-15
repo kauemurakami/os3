@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:os_tres/app/modules/home_user/home_controller.dart';
-import 'package:os_tres/app/theme/app_colors.dart';
-
-class CustomBottomNavigation extends GetView<HomeController> {
+class CustomBottomNavigation extends GetView{
   final controller = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
     return Obx (() => BottomNavigationBar(
+      backgroundColor: Color(0xff1C1C1C),
         currentIndex: controller.index,
-        fixedColor: mainColor,
+        fixedColor: Colors.white,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         onTap: (index) => controller.index = index,

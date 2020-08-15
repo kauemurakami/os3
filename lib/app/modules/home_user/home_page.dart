@@ -11,9 +11,9 @@ class HomePage extends GetView<HomeController> {
 
   final List<Widget> telas = [
     HomeScreen(),
+    BuscarJogoPage(),
     MinhaSalaPage(),
     CriarSalaPage(),
-    BuscarJogoPage(),
   ];
 
   @override

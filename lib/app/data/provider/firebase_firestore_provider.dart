@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:os_tres/app/data/model/jogos_model.dart';
 
 class FirebaseFirestoreProvider {
-
   getJogos() async {
     List<JogoModel> jogos = List<JogoModel>();
     await Firestore.instance
@@ -17,6 +16,20 @@ class FirebaseFirestoreProvider {
     return jogos;
   }
 
+  criarSala() async {
 
+  }
+
+  getSalas() async {
+    
+  }
+
+  buscarJogo() async {
+
+  }
+
+  minhasSalas() async {
+
+  }
 
 }
