@@ -10,9 +10,8 @@ class CustomItemGrid extends Container {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
       color: secondColor,
-      child: Image.asset('assets/images/1.png'),
+      child: Image.network(this.jogo.imageUrl),
     );
   }
 }

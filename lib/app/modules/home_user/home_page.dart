@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:os_tres/app/modules/home_user/widgets/item_grid_widget.dart';
-import 'package:os_tres/app/widgets/custom_button_widget.dart';
 
 import 'home_controller.dart';
 
@@ -38,12 +37,17 @@ class HomePage extends GetView<HomeController> {
               ),
             ),
           ),
-          CustomButtonWidget(
-            text: 'teste',
-            callback: () => controller.getJogos(),
-          )
+         
         ],
       )),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: [
+        BottomNavigationBarItem(title : Text('Jogos'), icon: Icon(Icons.play_arrow, )),
+        BottomNavigationBarItem(title : Text('Minha Sala'), icon: Icon(Icons.home)),
+        BottomNavigationBarItem(title : Text('Buscar'), icon: Icon(Icons.search)),
+        BottomNavigationBarItem(title : Text('Criar Sala'), icon: Icon(Icons.add_to_queue)),
+      ]),
     );
   }
 }

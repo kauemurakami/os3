@@ -19,14 +19,15 @@ class HomeController extends GetxController {
   final _imagesJogos = List<String>().obs;
   get imagesJogos => this._imagesJogos.value;
   set imagesJogos(value) => this._imagesJogos.value = value;
-    String imageUrl;
 
-  getImages() async {
-    print(this.jogos);
-    await FirebaseStorage.instance.ref().child('images/1.png').getDownloadURL().then((data) => this.imageUrl = data);    
-    print(imageUrl);
-    //return url;
+  String imageUrl;
+
+/*
+  getImages(String id) async {
+    await FirebaseStorage.instance.ref().child('images/$id.png').getDownloadURL().then((data) => this.imageUrl = data);    
+    return imageUrl;
   }
+*/
 
   @override
   void onInit() {
@@ -36,7 +37,6 @@ class HomeController extends GetxController {
 
   getJogos() {
     repository.getJogos().then((data) => this.jogos = data);
-    //print(this.jogos);
-    print(getImages());
+    //print(getImages('1'));
   }
 }
