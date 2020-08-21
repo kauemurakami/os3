@@ -12,7 +12,7 @@ class CustomDropDownJogos extends GetView {
     Container(
         child: Obx(() => DropdownButton<JogoModel>(
           value: null,
-          hint: Text("Selecione o jogo"),
+          hint: controller.selectedJogo.nomeJogo != null ? Text(controller.selectedJogo.nomeJogo) : ("Selecione o jogo"),
           icon: Icon(Icons.arrow_drop_down),
           iconSize: 24,
           elevation: 16,
